@@ -295,25 +295,49 @@ public class BidController {
 //}
     @GetMapping("/bid-history")
 
+
+
     public ResponseEntity<List<BidHistoryDto>> getUserBidHistory(
+
+
 
             @RequestHeader("Authorization") String authHeader,
 
+
+
             @RequestParam(required = false) String status) {
+
+
 
         
 
+
+
         String token = authHeader.substring(7);
+
+
 
         String username = jwtUtil.getUsernameFromJwt(token);
 
+
+
         User user = userRepository.findByUsername(username).orElse(null);
+
+
 
         if (user == null) {
 
+
+
             return ResponseEntity.badRequest().build();
 
+
+
         }
+
+
+
+
 
 
 
@@ -321,17 +345,35 @@ public class BidController {
 
 
 
+
+
+
+
         Map<Long, Bid> highestBidsPerProduct = userBids.stream()
+
+
 
             .collect(Collectors.toMap(
 
+
+
                 bid -> bid.getProduct().getId(),
+
+
 
                 bid -> bid,
 
+
+
                 (existing, replacement) -> existing.getBidPrice() > replacement.getBidPrice() ? existing : replacement
 
+
+
             ));
+
+
+
+
 
 
 
@@ -339,43 +381,75 @@ public class BidController {
 
 
 
+
+
+
+
         List<BidHistoryDto> history = highestBidsPerProduct.values().stream().map(bid -> {
+
+
 
             Product product = bid.getProduct();
 
+
+
             User seller = product.getSeller();
 
-            
 
-            // Get the current winning bid (not just the user's highest)
+
+         
 
             Bid currentWinningBid = bidRepository.findTopByProductIdOrderByBidPriceDesc(product.getId());
 
-            
-
             boolean isWinner = currentWinningBid != null && 
 
+
+
                              currentWinningBid.getUser().getId().equals(user.getId()) && 
+
+
 
                              now.isAfter(product.getAuctionEnd());
 
 
 
+
+
+
+
             String bidStatus = now.isAfter(product.getAuctionEnd()) ? "EXPIRED" : "LIVE";
 
+
+
             String winStatus = isWinner ? "WON" : 
+
+
 
                              now.isAfter(product.getAuctionEnd()) ? "LOST" : "ONHOLD";
 
 
 
+
+
+
+
             Double finalPrice = product.getFinalPrice();
+
+
 
             if (finalPrice == null && now.isAfter(product.getAuctionEnd())) {
 
+
+
                 finalPrice = currentWinningBid != null ? currentWinningBid.getBidPrice() : product.getBasePrice();
 
+
+
             }
+
+
+
+
 
 
 
@@ -383,53 +457,105 @@ public class BidController {
 
 
 
+
+
+
+
             return new BidHistoryDto(
+
+
 
                     product.getId(),
 
+
+
                     product.getName(),
+
+
 
                     "/uploads/" + product.getImage(),
 
+
+
                     product.getCategory(),
+
+
 
                     product.getBasePrice(),
 
+
+
                     bid.getBidPrice(),
+
+
 
                     finalPrice,
 
+
+
                     remainingTime,
+
+
 
                     winStatus,
 
+
+
                     bidStatus,
+
+
 
                     currentWinningBid != null ? currentWinningBid.getBidPrice() : product.getBasePrice(),
 
-                    seller.getUsername(),
+
+
+                    seller.getFullname(),
+
+
 
                     seller.getMobile()
 
+
+
             );
+
+
 
         }).collect(Collectors.toList());
 
 
 
+
+
+
+
         if (status != null) {
+
+
 
             history = history.stream()
 
+
+
                     .filter(dto -> dto.getStatus().equalsIgnoreCase(status))
 
+
+
                     .collect(Collectors.toList());
+
+
 
         }
 
 
 
+
+
+
+
         return ResponseEntity.ok(history);
+
+
 
     }
 
