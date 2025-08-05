@@ -12,7 +12,7 @@ const MyAuction = () => {
 
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8089/bids/seller-auction-history`, {
+        const res = await axios.get(`https://onlinebiddingplatform.onrender.com/bids/seller-auction-history`, {
           headers: {
             Authorization: `Bearer ${token}`, 
           },
