@@ -19,7 +19,7 @@ const ViewDetails = () => {
 
   
   useEffect(() => {
-    const socket = new SockJS('http://localhost:8089/ws');
+    const socket = new SockJS('https://onlinebiddingplatform.onrender.com/ws');
     const stompClient = new Client({
       webSocketFactory: () => socket,
       reconnectDelay: 5000,
@@ -46,7 +46,7 @@ const ViewDetails = () => {
 
   const fetchProductDetails = async () => {
     try {
-      const res = await axios.get(`http://localhost:8089/products/details/${id}`);
+      const res = await axios.get(`https://onlinebiddingplatform.onrender.com/products/details/${id}`);
       setProduct(res.data);
       setMessage('');
     } catch (err) {
