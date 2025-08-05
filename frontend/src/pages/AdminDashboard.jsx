@@ -20,7 +20,7 @@ const AdminDashboard = () => {
 
   const fetchPendingUsers = async () => {
     try {
-      const res = await axios.get('http://localhost:8089/admin/users');
+      const res = await axios.get('https://onlinebiddingplatform.onrender.com/admin/users');
       setPendingUsers(res.data);
     } catch {
       toast.error('❌ Failed to load pending users');
@@ -29,7 +29,7 @@ const AdminDashboard = () => {
 
   const verifyUser = async (id) => {
     try {
-      await axios.post(`http://localhost:8089/admin/verify/${id}`);
+      await axios.post(`https://onlinebiddingplatform.onrender.com/admin/verify/${id}`);
       toast.success('✅ User verified');
       setPendingUsers((prev) => prev.filter((u) => u.id !== id));
     } catch {
@@ -39,7 +39,7 @@ const AdminDashboard = () => {
 
   const rejectUser = async (id) => {
     try {
-      await axios.post(`http://localhost:8089/admin/reject/${id}`);
+      await axios.post(`https://onlinebiddingplatform.onrender.com/admin/reject/${id}`);
       toast.info('❌ User rejected');
       setPendingUsers((prev) => prev.filter((u) => u.id !== id));
     } catch {
