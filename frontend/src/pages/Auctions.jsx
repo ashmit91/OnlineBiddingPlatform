@@ -10,7 +10,7 @@ const Auctions = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/products');
+        const response = await axios.get('https://onlinebiddingplatform.onrender.com/api/products');
         setProducts(response.data);
       } catch (error) {
         toast.error('Failed to fetch products');
@@ -24,7 +24,7 @@ const Auctions = () => {
   const handleBid = async (productId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`http://localhost:8080/api/products/${productId}/bids`, 
+      await axios.post(`https://onlinebiddingplatform.onrender.com/api/products/${productId}/bids`, 
         { amount: bidAmount },
         { headers: { Authorization: `Bearer ${token}` } }
       );
