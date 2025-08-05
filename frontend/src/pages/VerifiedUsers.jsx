@@ -20,7 +20,7 @@ const VerifiedUsers = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('http://localhost:8089/admin/users/all');
+      const res = await axios.get('https://onlinebiddingplatform.onrender.com/admin/users/all');
       setUsers(res.data);
     } catch {
       toast.error('❌ Failed to fetch verified users');
@@ -29,7 +29,7 @@ const VerifiedUsers = () => {
 
   const toggleBlock = async (id, shouldBlock) => {
     try {
-      await axios.post(`http://localhost:8089/admin/block-user/${id}?block=${shouldBlock}`);
+      await axios.post(`https://onlinebiddingplatform.onrender.com/admin/block-user/${id}?block=${shouldBlock}`);
       toast.success(shouldBlock ? '🔒 User Blocked' : '🔓 User Unblocked');
       fetchUsers(); // Refresh the list
     } catch {
