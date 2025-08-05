@@ -99,3 +99,4 @@ C:\Users\Ashmit\OnlineBiddingPlatform\.netcore\AboutUsApi\obj\Debug\net8.0\refin
 C:\Users\Ashmit\OnlineBiddingPlatform\.netcore\AboutUsApi\obj\Debug\net8.0\AboutUsApi.pdb
 C:\Users\Ashmit\OnlineBiddingPlatform\.netcore\AboutUsApi\obj\Debug\net8.0\AboutUsApi.genruntimeconfig.cache
 C:\Users\Ashmit\OnlineBiddingPlatform\.netcore\AboutUsApi\obj\Debug\net8.0\ref\AboutUsApi.dll
+C:\Users\Ashmit\OnlineBiddingPlatform\.netcore\AboutUsApi\obj\Debug\net8.0\AboutUsApi.sourcelink.json
