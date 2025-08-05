@@ -64,7 +64,7 @@ const Signup = () => {
       if (files.aadhaarPhoto) data.append('aadhaarPhoto', files.aadhaarPhoto);
       if (files.panPhoto) data.append('panPhoto', files.panPhoto);
 
-      await axios.post('http://localhost:8089/api/users/register', data, {
+      await axios.post('https://onlinebiddingplatform.onrender.com/api/users/register', data, {
       headers: { 'Content-Type': 'multipart/form-data' }
     });
 
@@ -86,7 +86,7 @@ const Signup = () => {
       otp: otpState.code
     });
 
-    await axios.post('http://localhost:8089/api/users/verify-otp', data, {
+    await axios.post('https://onlinebiddingplatform.onrender.com/api/users/verify-otp', data, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
