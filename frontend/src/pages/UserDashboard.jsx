@@ -34,7 +34,7 @@ const UserDashboard = () => {
   const fetchAllProducts = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('http://localhost:8089/products/all');
+      const res = await axios.get('https://onlinebiddingplatform.onrender.com/products/all');
       setProducts(res.data);
       setError(null);
     } catch (err) {
