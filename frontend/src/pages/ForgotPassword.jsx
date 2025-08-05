@@ -17,7 +17,7 @@ const ForgotPassword = () => {
       const form = new URLSearchParams();
       form.append('email', email);
 
-      await axios.post('http://localhost:8089/api/users/forgot-password', form, {
+      await axios.post('https://onlinebiddingplatform.onrender.com/api/users/forgot-password', form, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       });
 
