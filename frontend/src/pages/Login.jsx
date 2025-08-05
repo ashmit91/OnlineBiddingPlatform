@@ -27,8 +27,8 @@ const Login = () => {
     const { username, password } = credentials;
     const isAdmin = username.toLowerCase() === 'admin';
     const loginURL = isAdmin 
-      ? 'http://localhost:8089/admin/login'
-      : 'http://localhost:8089/api/users/login';
+      ? 'https://onlinebiddingplatform.onrender.com/admin/login'
+      : 'https://onlinebiddingplatform.onrender.com/api/users/login';
 
     try {
       let res;
