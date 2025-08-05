@@ -53,7 +53,7 @@ const LiveAuctions = () => {
 
   const fetchLiveProducts = async () => {
     try {
-      const res = await axios.get('http://localhost:8089/products/live-with-seller');
+      const res = await axios.get('https://onlinebiddingplatform.onrender.com/products/live-with-seller');
       const now = new Date();
 
       const liveOnly = res.data.filter(product => {
