@@ -16,7 +16,7 @@ const ForgetUsername = () => {
       const form = new FormData();
       form.append('email', email);
 
-      const res = await axios.post('http://localhost:8089/api/users/forgot-username', form, {
+      const res = await axios.post('https://onlinebiddingplatform.onrender.com/api/users/forgot-username', form, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
@@ -33,7 +33,7 @@ const ForgetUsername = () => {
       form.append('email', email);
       form.append('otp', otp);
 
-      const res = await axios.post('http://localhost:8089/api/users/verify-forgot-username-otp', form, {
+      const res = await axios.post('https://onlinebiddingplatform.onrender.com/api/users/verify-forgot-username-otp', form, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
