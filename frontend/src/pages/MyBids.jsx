@@ -17,7 +17,7 @@ const MyBids = () => {
     }
 
     // ✅ Get bid history
-    axios.get("http://localhost:8089/bids/bid-history", {
+    axios.get("https://onlinebiddingplatform.onrender.com/bids/bid-history", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {
