@@ -24,7 +24,7 @@ const DashboardLayout = ({ children }) => {
   const toggleProfileSidebar = async () => {
     if (!profileVisible) {
       try {
-        const res = await axios.get('http://localhost:8089/api/users/profile', {
+        const res = await axios.get('https://onlinebiddingplatform.onrender.com/api/users/profile', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProfile(res.data);
@@ -40,7 +40,7 @@ const DashboardLayout = ({ children }) => {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete('http://localhost:8089/api/users/delete-account', {
+      await axios.delete('https://onlinebiddingplatform.onrender.com/api/users/delete-account', {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert('Account deleted successfully.');
