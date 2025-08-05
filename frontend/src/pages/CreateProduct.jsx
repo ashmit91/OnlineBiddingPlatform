@@ -62,7 +62,7 @@ const CreateProduct = () => {
     const token = localStorage.getItem('token');
 
     try {
-  const res = await axios.post('http://localhost:8089/products/upload', data, {
+  const res = await axios.post('https://onlinebiddingplatform.onrender.com/products/upload', data, {
     headers: {
       'Content-Type': 'multipart/form-data',
       'Authorization': `Bearer ${token}`,
